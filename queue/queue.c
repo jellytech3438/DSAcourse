@@ -1,52 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "queue.h"
 
-struct node{
-  int data;
-  struct node *next;
-};
+// int main(int argc, char const *argv[]) {
+//   Node a,b,c;
+//   Queue q;
 
-struct queue{
-  int length;
-  struct node *head;
-  struct node *tail;
-};
+//   Node *b_ptr = &b;
 
-typedef struct node Node;
-typedef struct queue Queue;
+//   a.data = 3;
+//   a.next = &b;
+//   b.data = 2;
+//   b.next = &c;
+//   c.data = 1;
+//   c.next = NULL;
 
-void print_val(Node *);
-void print_length(Queue *);
-void peek(Queue *);
-void push(Queue *,int);
-void pop(Queue *);
-void reverse_ll(Node **);
+//   q.head = &a;
+//   q.length = 3;
+//   q.tail = &c;
 
-int main(int argc, char const *argv[]) {
-  Node a,b,c;
-  Queue q;
+//   push(&q,0);
+//   peek(&q);
+//   pop(&q);
+//   print_val(q.head);
+//   print_length(&q);
 
-  Node *b_ptr = &b;
-
-  a.data = 3;
-  a.next = &b;
-  b.data = 2;
-  b.next = &c;
-  c.data = 1;
-  c.next = NULL;
-
-  q.head = &a;
-  q.length = 3;
-  q.tail = &c;
-
-  push(&q,0);
-  peek(&q);
-  pop(&q);
-  print_val(q.head);
-  print_length(&q);
-
-  return 0;
-}
+//   return 0;
+// }
 
 void print_val(Node *t){
   Node *n = t, *temp = t->next;

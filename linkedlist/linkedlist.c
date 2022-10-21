@@ -1,51 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "linkedlist.h"
 
-struct node{
-  int data;
-  struct node *next;
-};
+// int main(int argc, char const *argv[]) {
+//   Node a,b,c;
+//   ll l;
 
-struct linkedlist{
-  struct node *head;
-};
+//   Node *b_ptr = &b;
 
-typedef struct node Node;
-typedef struct linkedlist ll;
+//   a.data = 3;
+//   a.next = &b;
+//   b.data = 2;
+//   b.next = &c;
+//   c.data = 1;
+//   c.next = NULL;
 
-void print_val(Node *);
-void add_first(Node **,int);
-void add_last(Node **,int);
-void remove_list_node_v3(ll*, Node*);
-void delete_first(Node **);
-void delete_last(Node **);
-void reverse_ll(Node **);
+//   l.head = &a;
 
-int main(int argc, char const *argv[]) {
-  Node a,b,c;
-  ll l;
+//   add_last(&l.head,0);
+//   delete_last(&l.head);
+//   add_first(&l.head,0);
+//   delete_first(&l.head);
+//   remove_list_node_v3(&l,b_ptr);
+//   reverse_ll(&l.head);
+//   print_val(l.head);
 
-  Node *b_ptr = &b;
-
-  a.data = 3;
-  a.next = &b;
-  b.data = 2;
-  b.next = &c;
-  c.data = 1;
-  c.next = NULL;
-
-  l.head = &a;
-
-  add_last(&l.head,0);
-  delete_last(&l.head);
-  add_first(&l.head,0);
-  delete_first(&l.head);
-  remove_list_node_v3(&l,b_ptr);
-  reverse_ll(&l.head);
-  print_val(l.head);
-
-  return 0;
-}
+//   return 0;
+// }
 
 void print_val(Node *t){
   Node *n = t, *temp = t->next;

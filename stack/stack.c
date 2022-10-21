@@ -1,49 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "stack.h"
 
-struct node{
-  int data;
-  struct node *next;
-};
+// int main(int argc, char const *argv[]) {
+//   Node a,b,c;
+//   Stack s;
 
-struct stack{
-  int depth;
-  struct node *head;
-};
+//   Node *b_ptr = &b;
 
-typedef struct node Node;
-typedef struct stack Stack;
+//   a.data = 3;
+//   a.next = &b;
+//   b.data = 2;
+//   b.next = &c;
+//   c.data = 1;
+//   c.next = NULL;
 
-void print_val(Node *);
-void print_depth(Stack *);
-void push(Stack *,int);
-void pop(Stack *);
-void reverse_ll(Node **);
+//   s.head = &a;
+//   s.depth = 3;
 
-int main(int argc, char const *argv[]) {
-  Node a,b,c;
-  Stack s;
+//   push(&s,0);
+//   pop(&s);
+//   // reverse_ll(&s.head);
+//   print_val(s.head);
+//   print_depth(&s);
 
-  Node *b_ptr = &b;
-
-  a.data = 3;
-  a.next = &b;
-  b.data = 2;
-  b.next = &c;
-  c.data = 1;
-  c.next = NULL;
-
-  s.head = &a;
-  s.depth = 3;
-
-  push(&s,0);
-  pop(&s);
-  // reverse_ll(&s.head);
-  print_val(s.head);
-  print_depth(&s);
-
-  return 0;
-}
+//   return 0;
+// }
 
 void print_val(Node *t){
   Node *n = t, *temp = t->next;

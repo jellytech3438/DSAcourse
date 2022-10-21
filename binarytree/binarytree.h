@@ -1,4 +1,6 @@
-#include <stdio.h>
+#ifndef BINTREE
+#define BINTREE
+#endif
 
 struct tree{
   int data;
@@ -8,7 +10,3 @@ struct tree{
 
 typedef struct tree Tree;
 
-int main(int argc, char const *argv[]) {
-  
-  return 0;
-}
