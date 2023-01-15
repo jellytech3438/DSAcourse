@@ -21,3 +21,4 @@ void remove_list_node_v3(ll*, Node*);
 void delete_first(Node **);
 void delete_last(Node **);
 void reverse_ll(Node **);
+void concrete_ll(ll *l1, ll *l2);

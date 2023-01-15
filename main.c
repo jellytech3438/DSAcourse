@@ -1,28 +1,16 @@
 #include <stdio.h>
+#include <stdbool.h>
+#include "stack/stack.h"
 #include "queue/queue.h"
+#include "sparsematrix/sparsematrix.h"
+#include "binarytree/binarytree.h"
+
+#include "dsalib.h"
+
+#define execute(s) fflush(stdout); \
+__dsa__##s##__()
 
 int main(int argc, char const *argv[]) {
-  Node a,b,c;
-  Queue q;
-
-  Node *b_ptr = &b;
-
-  a.data = 3;
-  a.next = &b;
-  b.data = 2;
-  b.next = &c;
-  c.data = 1;
-  c.next = NULL;
-
-  q.head = &a;
-  q.length = 3;
-  q.tail = &c;
-
-  push(&q,0);
-  peek(&q);
-  pop(&q);
-  print_val(q.head);
-  print_length(&q);
-
-  return 0;
+    execute(completebinarytree);
+    return 0;
 }

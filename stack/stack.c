@@ -1,70 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "stack.h"
 
-// int main(int argc, char const *argv[]) {
-//   Node a,b,c;
-//   Stack s;
+Stack* newStack(){
+  return malloc(sizeof(Stack));
+}
 
-//   Node *b_ptr = &b;
+bool isSEmpty(void* s){
+  Stack* stack = (Stack*)s;
+  return stack->top == NULL;
+}
 
-//   a.data = 3;
-//   a.next = &b;
-//   b.data = 2;
-//   b.next = &c;
-//   c.data = 1;
-//   c.next = NULL;
-
-//   s.head = &a;
-//   s.depth = 3;
-
-//   push(&s,0);
-//   pop(&s);
-//   // reverse_ll(&s.head);
-//   print_val(s.head);
-//   print_depth(&s);
-
-//   return 0;
-// }
-
-void print_val(Node *t){
-  Node *n = t, *temp = t->next;
-  while (temp != NULL) {
-    printf("%d\n", n->data);
-    n = temp;
-    temp = n->next;
+void printStack(Stack *s){
+  printf("top: ");
+  for(Node *n = s->top; n != NULL; n = n->next){
+    printf("%d->",n->data);
   }
-  printf("%d\n", n->data);
+  printf("NULL\n");
 }
 
-void print_depth(Stack *s){
-  printf("%d\n", s->depth);
+void spush(void* s,int val){
+  Stack* stack = (Stack*)s;
+  // create a new node
+  Node *newnode = (Node*)malloc(sizeof(Node));
+  newnode->data = val;
+
+  // push by change address
+  Node **t = &stack->top;
+  newnode->next = *t;
+  *t = newnode;
+  stack->depth++;
 }
 
-void push(Stack *s,int val){
-  Node **t = &s->head;
-  Node *a = (Node*)malloc(sizeof(Node));
-  a->data = val;
-  a->next = *t;
-  *t = a;
-  s->depth++;
-}
-
-void pop(Stack *s){
-  Node **t = &s->head;
+void spop(void* s){
+  Stack* stack = (Stack*)s;
+  if(isSEmpty(s))
+    return;
+  Node **t = &stack->top;
   Node *buffer = *t;
   *t = buffer->next;
-  s->depth--;
-}
-
-void reverse_ll(Node **t){
-  Node **pre = t;
-  Node *cur = (*t)->next;
-  (*pre)->next = NULL;
-  while (cur != NULL) {
-    Node *next = cur->next;
-    cur->next = *pre;
-    *pre = cur;
-    cur = next;
-  }
+  stack->depth--;
 }

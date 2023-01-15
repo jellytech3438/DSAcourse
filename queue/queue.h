@@ -2,10 +2,12 @@
 #define QUEUE
 #endif
 
+#ifndef STACK
 struct node{
-  int data;
+  void* data;
   struct node *next;
 };
+#endif
 
 struct queue{
   int length;
@@ -15,9 +17,10 @@ struct queue{
 
 typedef struct node Node;
 typedef struct queue Queue;
-void print_val(Node *);
-void print_length(Queue *);
-void peek(Queue *);
-void push(Queue *,int);
-void pop(Queue *);
-void reverse_ll(Node **);
+
+Queue* newQueue();
+bool isQEmpty(void*);
+void printQueue(Queue *);
+int qlen(Queue *);
+void qpush(void*,void*);
+void* qpop(void*);
