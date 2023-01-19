@@ -10,7 +10,7 @@ struct node{
 #endif
 
 struct queue{
-  int length;
+  unsigned length;
   struct node *head;
   struct node *tail;
 };
@@ -20,7 +20,15 @@ typedef struct queue Queue;
 
 Queue* newQueue();
 bool isQEmpty(void*);
-void printQueue(Queue *);
-int qlen(Queue *);
+void printQueue(Queue*);
+int qlen(Queue*);
+void qclear(Queue*);
 void qpush(void*,void*);
-void* qpop(void*);
+void** qpop(void*);
+
+#define PRINTQUEUE(q, struct_name,symbol ) \
+printf("head: "); \
+for(Node *n = q->head; n != NULL; n = n->next){ \
+  printf("%d->",(*(struct_name**)(n->data))->symbol); \
+} \
+printf("NULL\n");

@@ -4,7 +4,9 @@
 #include "queue.h"
 
 Queue* newQueue(){
-  return malloc(sizeof(Queue));
+    Queue* newQ = malloc(sizeof(Queue));
+    newQ->length = 0;
+    return newQ;
 }
 
 bool isQEmpty(void* q){
@@ -24,6 +26,14 @@ int qlen(Queue *q){
   return q->length;
 }
 
+void qclear(Queue* q){
+    while(q->head != NULL){
+        Node* temp = q->head;
+        q->head = q->head->next;
+        free(temp);
+    }
+}
+
 void qpush(void* q,void* val){
   Queue* queue = (Queue*)q;
   // create new node
@@ -39,12 +49,12 @@ void qpush(void* q,void* val){
   queue->length++;
 }
 
-void* qpop(void* q){
+void** qpop(void* q){
   Queue* queue = (Queue*)q;
   struct node* ret;
   if(isQEmpty(queue))
     return NULL;
-  ret = queue->head;
+  ret = (queue->head);
   if(queue->head == queue->tail){
     queue->head = NULL;
     queue->tail = NULL;
@@ -52,5 +62,5 @@ void* qpop(void* q){
     queue->head = queue->head->next;
   }
   queue->length--;
-  return ret;
+  return &*((ret)->data);
 }

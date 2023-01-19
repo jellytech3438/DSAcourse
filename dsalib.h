@@ -1,6 +1,7 @@
 #ifndef DSALIB
 #define DSALIB
 
+#include <stdio.h>
 #ifdef STACK
 void __dsa__stack__(){
   Stack *s = newStack();
@@ -20,7 +21,7 @@ void __dsa__queue__(){
   qpush(q,2);
   qpush(q,1);
   qpush(q,0);
-  qpop(q);
+//  printf("%d poped out\n",(qpop(q)));
   printQueue(q);
 }
 #endif
@@ -44,7 +45,15 @@ void __dsa__completebinarytree__(){
   btadd(&tree, 3);
   btadd(&tree, 4);
   btadd(&tree, 5);
-  printInorder(tree);
+  btadd(&tree, 6);
+  btadd(&tree, 7);
+  btadd(&tree, 8);
+  printPreorder(tree->root);
+  printf("\n");
+  printInorder(tree->root);
+  printf("\n");
+  printPostorder(tree->root);
+  printf("\n");
 }
 #endif
 

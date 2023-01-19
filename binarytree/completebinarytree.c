@@ -23,7 +23,7 @@ bool isTEmpty(void* t){
 void printPreorder(void* r){
     if(r == NULL) return;
     tnode* root = (tnode*)r;
-    printf("%d(%d)->",root->value,root->level);
+    printf("%d->",root->value);
     if (root->left != NULL){
         printPreorder(root->left);
     }
@@ -31,31 +31,29 @@ void printPreorder(void* r){
         printPreorder(root->right);
     }
 }
+
 void printInorder(void* r){
     if(r == NULL) return;
     tnode* root = (tnode*)r;
     if (root->left != NULL){
-        printPreorder(root->left);
-    }else{
-        printf("test\n");
+        printInorder(root->left);
     }
-    printf("%d(%d)->",root->value,root->level);
+    printf("%d->",(root)->value);
     if (root->right != NULL){
-        printPreorder(root->right);
-    }else{
-        printf("test\n");
+        printInorder(root->right);
     }
 }
+
 void printPostorder(void* r){
     if(r == NULL) return;
     tnode* root = (tnode*)r;
     if (root->left != NULL){
-        printPreorder(root->left);
+        printPostorder(root->left);
     }
     if (root->right != NULL){
-        printPreorder(root->right);
+        printPostorder(root->right);
     }
-    printf("%d(%d)->",root->value,root->level);
+    printf("%d->",root->value);
 }
 
 void btadd(Tree** t, int val){
@@ -66,16 +64,17 @@ void btadd(Tree** t, int val){
         return;
     }
     tnode* root = (*t)->root;
+    tnode** temp;
 
     Queue* queue = newQueue();
     qpush(queue,&root);
 
     while(!isQEmpty(queue)){
-        tnode** temp = qpop(queue);
-        printf("value %d level %d\n",(*temp)->value, (*temp)->level);
-        printQueue(queue);
+        temp = (tnode**)qpop(queue);
+        // printf("value %d level %d\n",(*temp)->value, (*temp)->level);
+        // PRINTQUEUE(queue,tnode,value);
         if ((*temp)->left != NULL){
-            qpush(queue,(*temp)->left);
+            qpush(queue,&(*temp)->left);
         }else{
             // find first external
             newNode->level = (*temp)->level+1;
@@ -83,7 +82,7 @@ void btadd(Tree** t, int val){
             break;
         }
         if ((*temp)->right != NULL){
-            qpush(queue,(*temp)->right);
+            qpush(queue,&(*temp)->right);
         }else{
             // find first external
             newNode->level = (*temp)->level+1;
@@ -91,5 +90,5 @@ void btadd(Tree** t, int val){
             break;
         }
     }
-    free(queue);
+    qclear(queue);
 }
