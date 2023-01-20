@@ -11,6 +11,6 @@
 __dsa__##s##__()
 
 int main(int argc, char const *argv[]) {
-    execute(queue);
+    execute(sparse);
     return 0;
 }

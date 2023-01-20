@@ -41,7 +41,8 @@ void addValue(SparseMatrix *sm, int row, int col, int val){
   }
 
   // find row to add until the nthRow is on position or end
-  if(&((*nthRow).right) == &(*nthRow) || nthRow == NULL ){
+  // detect the address of the value that the pointer(right) point to are same or not
+  if(&(*(nthRow->right)) == &(*nthRow) || nthRow == NULL ){
     (*nthRow).right = newNode;
     newNode->right = nthRow;
   }else{
@@ -53,7 +54,7 @@ void addValue(SparseMatrix *sm, int row, int col, int val){
   }
 
   // find col to add until the nthCol is on position or end
-  if(&((*nthCol).down) == &(*nthCol) || nthCol == NULL){
+  if(&(*(nthCol->down)) == &(*nthCol) || nthCol == NULL){
     (*nthCol).down = newNode;
     newNode->down = (nthCol);
   }else{
@@ -89,4 +90,65 @@ void printMatrix(SparseMatrix *sm){
         printf("END\n");
     }
   }
+}
+
+SparseMatrix* multiply(SparseMatrix* a, SparseMatrix* b){
+    if(a->col != b-> row) return NULL;
+    SparseMatrix* c = newMatrix(a->row,b->col);
+    for(int i = 0; i < c->row; i++){
+        for(int j = 0; j < c->col; j++){
+            // get a's j row and multiply b's i col and give to c's [i][j]
+            // if any of both are zero then continue;
+
+            // a's part
+            matrixNode* arow = a->head;
+            for(int cnt = 0; cnt < i;cnt++) arow = arow->u.head.next;
+            // construct a array
+            int a_row_arr[a->col];
+            for(int _ = 0; _ < a->col; _++) a_row_arr[_] = 0;
+            // keep right
+            // if is itself then it means there are no entry node
+            if(&(*(arow->right)) == &(*arow) || arow == NULL ){
+              continue;
+            }else{
+              // extract values to a_row
+              matrixNode* a = arow;
+              while(a->right != arow){
+                int etycol = a->right->u.entry.col;
+                a_row_arr[etycol] = a->right->u.entry.value;
+                a = a->right;
+              }
+            }
+
+            // b's part
+            matrixNode* bcol = b->head;
+            for(int cnt = 0; cnt < j;cnt++) bcol = bcol->u.head.next;
+            // construct a array
+            int b_col_arr[b->row];
+            for(int _ = 0; _ < b->row; _++) b_col_arr[_] = 0;
+            // keep down
+            // if is itself then it means there are no entry node
+            if(&(*(*bcol).down) == &(*bcol) || bcol == NULL ){
+              continue;
+            }else{
+              // extract values to a_row
+              matrixNode* b = bcol;
+              while(b->down != bcol){
+                int etyrow = b->down->u.entry.row;
+                b_col_arr[etyrow] = b->down->u.entry.value;
+                b = b->down;
+              }
+            }
+
+            // multiply a with b and write to c
+            int cntval = 0;
+            for(int k = 0; k< a->col; k++){
+              cntval += (a_row_arr[k] * b_col_arr[k]);
+            }
+            addValue(c, i, j, cntval);
+
+        }
+    }
+
+    return c;
 }

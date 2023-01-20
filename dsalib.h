@@ -28,12 +28,21 @@ void __dsa__queue__(){
 
 #ifdef SPARSE
 void __dsa__sparse__(){
-  SparseMatrix *sm = newMatrix(4,3);
-  printMatrix(sm);
-  addValue(sm,0,0,1);
-  addValue(sm,2,1,3);
-  addValue(sm,3,0,4);
-  printMatrix(sm);
+  SparseMatrix* a = newMatrix(4,3);
+//  printMatrix(a);
+  addValue(a,0,0,1);
+  addValue(a,2,1,3);
+  addValue(a,3,0,4);
+  addValue(a,3,2,1);
+  printMatrix(a);
+  SparseMatrix* b = newMatrix(3,4);
+  addValue(b,0,3,2);
+  addValue(b,1,0,3);
+  addValue(b,2,2,5);
+  addValue(b,2,3,6);
+  printMatrix(b);
+  SparseMatrix* c = multiply(a,b);
+  printMatrix(c);
 }
 #endif
 

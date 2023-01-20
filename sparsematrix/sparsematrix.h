@@ -76,6 +76,7 @@ SparseMatrix* newMatrix(int row, int col);
 void addValue(SparseMatrix *sm, int row, int col, int val);
 void clearValue(SparseMatrix *sm, int row, int col);
 void printMatrix(SparseMatrix* sm);
+SparseMatrix* multiply(SparseMatrix*a, SparseMatrix*b);
 void expendRow(SparseMatrix *sm,int addrowNum);
 void expendCol(SparseMatrix *sm,int addcolNum);
 
