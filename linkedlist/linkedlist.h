@@ -11,8 +11,29 @@ struct linkedlist{
   struct node *head;
 };
 
+struct dnode{
+  int data;
+  struct dnode *next;
+  struct dnode *prev;
+};
+
+struct doublylinkedlist{
+  struct dnode *head;
+};
+
+struct cnode{
+  int data;
+  struct cnode* next;
+};
+
+struct circularlinkedlist{
+  struct cnode* head;
+};
+
 typedef struct node Node;
 typedef struct linkedlist ll;
+typedef struct doublylinkedlist dll;
+typedef struct circularlinkedlist cll;
 
 void print_val(Node *);
 void add_first(Node **,int);

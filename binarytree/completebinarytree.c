@@ -4,25 +4,25 @@
 #include "queue/queue.h"
 #include "binarytree.h"
 
-tnode* newTNode(int val){
-    tnode* t = malloc(sizeof(tnode));
+cbintNode* newCBinTNode(int val){
+    cbintNode* t = malloc(sizeof(cbintNode));
     t->value = val;
     return t;
 }
 
-Tree* newTree(){
-    Tree* t = malloc(sizeof(Tree));
+cbinTree* newCBinTree(){
+    cbinTree* t = malloc(sizeof(cbinTree));
     return t;
 }
 
-bool isTEmpty(void* t){
-    Tree* tree = (Tree*)t;
+bool isCBinTEmpty(void* t){
+    cbinTree* tree = (cbinTree*)t;
     return (tree->root == NULL);
 }
 
 void printPreorder(void* r){
     if(r == NULL) return;
-    tnode* root = (tnode*)r;
+    cbintNode* root = (cbintNode*)r;
     printf("%d->",root->value);
     if (root->left != NULL){
         printPreorder(root->left);
@@ -34,7 +34,7 @@ void printPreorder(void* r){
 
 void printInorder(void* r){
     if(r == NULL) return;
-    tnode* root = (tnode*)r;
+    cbintNode* root = (cbintNode*)r;
     if (root->left != NULL){
         printInorder(root->left);
     }
@@ -46,7 +46,7 @@ void printInorder(void* r){
 
 void printPostorder(void* r){
     if(r == NULL) return;
-    tnode* root = (tnode*)r;
+    cbintNode* root = (cbintNode*)r;
     if (root->left != NULL){
         printPostorder(root->left);
     }
@@ -56,21 +56,21 @@ void printPostorder(void* r){
     printf("%d->",root->value);
 }
 
-void btadd(Tree** t, int val){
-    tnode* newNode = newTNode(val);
-    if(isTEmpty(*t)){
+void cbtadd(cbinTree** t, int val){
+    cbintNode* newNode = newCBinTNode(val);
+    if(isCBinTEmpty(*t)){
         newNode->level = 1;
         (*t)->root = newNode;
         return;
     }
-    tnode* root = (*t)->root;
-    tnode** temp;
+    cbintNode* root = (*t)->root;
+    cbintNode** temp;
 
     Queue* queue = newQueue();
     qpush(queue,&root);
 
     while(!isQEmpty(queue)){
-        temp = (tnode**)qpop(queue);
+        temp = (cbintNode**)qpop(queue);
         // printf("value %d level %d\n",(*temp)->value, (*temp)->level);
         // PRINTQUEUE(queue,tnode,value);
         if ((*temp)->left != NULL){

@@ -48,20 +48,34 @@ void __dsa__sparse__(){
 
 #ifdef BINTREE
 void __dsa__completebinarytree__(){
-  Tree* tree = newTree();
-  btadd(&tree, 1);
-  btadd(&tree, 2);
-  btadd(&tree, 3);
-  btadd(&tree, 4);
-  btadd(&tree, 5);
-  btadd(&tree, 6);
-  btadd(&tree, 7);
-  btadd(&tree, 8);
-  printPreorder(tree->root);
-  printf("\n");
+  cbinTree* tree = newCBinTree();
+  cbtadd(&tree, 1);
+  cbtadd(&tree, 2);
+  cbtadd(&tree, 3);
+  cbtadd(&tree, 4);
+  cbtadd(&tree, 5);
+  cbtadd(&tree, 6);
+  cbtadd(&tree, 7);
+  cbtadd(&tree, 8);
+//  printPreorder(tree->root);
+//  printf("\n");
   printInorder(tree->root);
   printf("\n");
-  printPostorder(tree->root);
+//  printPostorder(tree->root);
+//  printf("\n");
+}
+
+void __dsa__threadbinarytree__(){
+  threadTree* tree = newThreadTree();
+  threadtadd(&tree, 1);
+  threadtadd(&tree, 2);
+  threadtadd(&tree, 3);
+  threadtadd(&tree, 4);
+  threadtadd(&tree, 5);
+  threadtadd(&tree, 6);
+  threadtadd(&tree, 7);
+  threadtadd(&tree, 8);
+  tprintInorder(tree->root);
   printf("\n");
 }
 #endif

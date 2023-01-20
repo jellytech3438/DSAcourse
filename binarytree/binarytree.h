@@ -2,26 +2,60 @@
 #define BINTREE
 #endif
 
-struct tnode{
+struct cbintnode{
   int value;
   int level;
-  struct tnode *left;
-  struct tnode *right;
+  struct cbintnode *left;
+  struct cbintnode *right;
 };
 
-struct tree{
-  struct tnode* root;
+struct cbintree{
+  struct cbintnode* root;
   int depth;
 };
 
-typedef struct tree Tree;
-typedef struct tnode tnode;
+typedef enum{
+  link,
+  thread
+} pointerType;
 
-tnode* newTNode(int val);
-Tree* newTree();
-bool isTEmpty(void*);
+struct threadnode{
+  int value;
+  pointerType lpt;
+  pointerType rpt;
+  struct threadnode *left;
+  struct threadnode *right;
+};
+
+// this threadtree is based on cbintree
+struct threadtree{
+  // this root is not a regular root, it is used for recording
+  // the most left node and the most right node's threaded pointer
+  // should point back to this root, and this root's right pointer point
+  // to itself, left pointer points to the REAL root
+  // and we set this root node's value to -1
+  struct threadnode* root;
+};
+
+typedef struct cbintree cbinTree;
+typedef struct cbintnode cbintNode;
+typedef struct threadtree threadTree;
+typedef struct threadnode threadNode;
+
+cbintNode* newCBinTNode(int val);
+cbinTree* newCBinTree();
+bool isCBinTEmpty(void*);
 void printPreorder(void*);
 void printInorder(void*);
 void printPostorder(void*);
-void btadd(Tree**,int);
-void btremove(Tree**,int);
+void cbtadd(cbinTree**,int);
+void cbtremove(cbinTree**,int);
+
+threadNode* newThreadNode(int val);
+threadTree* newThreadTree();
+bool isThreadTEmpty(void*);
+void tprintPreorder(void*);
+void tprintInorder(void*);
+void tprintPostorder(void*);
+void threadtadd(threadTree**,int);
+void threadtremove(threadTree**,int);
