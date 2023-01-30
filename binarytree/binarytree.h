@@ -37,10 +37,26 @@ struct threadtree{
   struct threadnode* root;
 };
 
+struct hnode{
+    // if this heap represented in array, this node's index
+    int index;
+    int value;
+    struct hnode* left;
+    struct hnode* right;
+};
+
+struct heap{
+    // max or min heap
+    enum{ max, min} ordertype;
+    struct hnode* root;
+};
+
 typedef struct cbintree cbinTree;
 typedef struct cbintnode cbintNode;
 typedef struct threadtree threadTree;
 typedef struct threadnode threadNode;
+typedef struct hnode hNode;
+typedef struct heap Heap;
 
 cbintNode* newCBinTNode(int val);
 cbinTree* newCBinTree();
@@ -49,13 +65,14 @@ void printPreorder(void*);
 void printInorder(void*);
 void printPostorder(void*);
 void cbtadd(cbinTree**,int);
-void cbtremove(cbinTree**,int);
 
 threadNode* newThreadNode(int val);
 threadTree* newThreadTree();
 bool isThreadTEmpty(void*);
-void tprintPreorder(void*);
 void tprintInorder(void*);
-void tprintPostorder(void*);
 void threadtadd(threadTree**,int);
-void threadtremove(threadTree**,int);
+
+hNode* newHNode(int val);
+Heap* newHeap(int order_type);
+bool isHeapEmpty(void*);
+void hadd(Heap**, int);

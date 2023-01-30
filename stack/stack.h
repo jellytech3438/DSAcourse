@@ -4,7 +4,7 @@
 
 #ifndef QUEUE
 struct node{
-  int data;
+  void* data;
   struct node *next;
 };
 #endif
@@ -20,5 +20,12 @@ typedef struct stack Stack;
 Stack* newStack();
 bool isSEmpty(void*);
 void printStack(Stack *);
-void spush(void*,int);
-void spop(void*);
+void spush(void*,void*);
+void** spop(void*);
+
+#define PRINTSTACK(s, struct_name, symbol) \
+printf("top: "); \
+for(Node *n = s->top; n != NULL; n = n->next){ \
+  printf("%d->",(*(struct_name**)(n->data))->symbol); \
+} \
+printf("NULL\n");

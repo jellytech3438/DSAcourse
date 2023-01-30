@@ -33,14 +33,18 @@ below are the implementation that have been made:
 - [x] queue
 - [x] stack
 - [x] sparsematrix
-- [ ] binarytree
+- [x] binarytree
     - [x] threadedbinarytree
     - [x] completebinarytree
+    - [ ] max(min)heap
+- [ ] unbalancedbinarytree
+    - [ ] binarysearchtree
+    - [ ] winnertree
+    - [ ] losertree
     - [ ] avltree
     - [ ] blackredtree
-- [ ] heap
-    - [ ] maxheap
-    - [ ] minheap
+- [ ] string
+    - [ ] kmp
 - [ ] sorting
     - [ ] quicksort
     - [ ] mergesort

@@ -20,7 +20,6 @@ void add_first(Node** t,int val){
 }
 
 void add_last(Node** t,int val){
-  // allocate a new Node to a
   Node* a = (Node*)malloc(sizeof(Node)), *buffer = *t;
   a->data = val;
   a->next = NULL;
@@ -42,18 +41,13 @@ void remove_list_node_v3(ll* list, Node* target){
 }
 
 void delete_first(Node** t){
-  // why this cannot be
-  // Node *buffer = t;
-  // t = buffer->next; (input is Node *t)
   Node *buffer = *t;
   *t = buffer->next;
 }
 
 void delete_last(Node** t){
   Node *buffer = *t;
-  // why this cannot be while (buffer->next != NULL) ????
   while (buffer->next->next != NULL) {
-    // why this cannot be *buffer = *buffer->next; ????
     buffer = buffer->next;
   }
   buffer->next = NULL;

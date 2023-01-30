@@ -20,25 +20,25 @@ void printStack(Stack *s){
   printf("NULL\n");
 }
 
-void spush(void* s,int val){
+void spush(void* s,void* val){
   Stack* stack = (Stack*)s;
   // create a new node
   Node *newnode = (Node*)malloc(sizeof(Node));
   newnode->data = val;
 
-  // push by change address
-  Node **t = &stack->top;
+  Node** t = &stack->top;
   newnode->next = *t;
   *t = newnode;
   stack->depth++;
 }
 
-void spop(void* s){
+void** spop(void* s){
   Stack* stack = (Stack*)s;
   if(isSEmpty(s))
-    return;
-  Node **t = &stack->top;
-  Node *buffer = *t;
-  *t = buffer->next;
+    return NULL;
+  Node** ret = &stack->top;
+  Node* t = stack->top;
+  stack->top = t->next;
   stack->depth--;
+  return &*((*ret)->data);
 }

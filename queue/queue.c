@@ -51,7 +51,7 @@ void qpush(void* q,void* val){
 
 void** qpop(void* q){
   Queue* queue = (Queue*)q;
-  struct node* ret;
+  Node* ret;
   if(isQEmpty(queue))
     return NULL;
   ret = (queue->head);

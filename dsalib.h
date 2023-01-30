@@ -8,10 +8,24 @@ void __dsa__stack__(){
   spush(s,3);
   spush(s,2);
   spush(s,1);
-  spush(s,0);
-  spop(s);
+//  printf("%d poped out\n",spop(s));
   printStack(s);
 }
+
+#ifdef BINTREE
+void __dsa__stack2__(){
+  Stack *s = newStack();
+  cbintNode* first = newCBinTNode(3);
+  cbintNode* second = newCBinTNode(2);
+  cbintNode* third = newCBinTNode(1);
+  spush(s,&first);
+  spush(s,&second);
+  spush(s,&third);
+  cbintNode** temp = (cbintNode**)spop(s);
+  printf("%d poped out\n",(*temp)->value);
+  PRINTSTACK(s,cbintNode,value);
+}
+#endif
 #endif
 
 #ifdef QUEUE
@@ -24,6 +38,19 @@ void __dsa__queue__(){
 //  printf("%d poped out\n",(qpop(q)));
   printQueue(q);
 }
+
+#ifdef BINTREE
+void __dsa__queue2__(){
+  Queue *q = newQueue();
+  cbintNode* first = newCBinTNode(3);
+  cbintNode* second = newCBinTNode(2);
+  qpush(q,&first);
+  qpush(q,&second);
+  cbintNode** temp = (cbintNode**)qpop(q);
+  printf("%d poped out\n",(*temp)->value);
+  PRINTQUEUE(q,cbintNode,value);
+}
+#endif
 #endif
 
 #ifdef SPARSE
@@ -78,6 +105,22 @@ void __dsa__threadbinarytree__(){
   tprintInorder(tree->root);
   printf("\n");
 }
+
+void __dsa__heap__(){
+  // 0 represent max heap
+  // 1 represent min heap
+  Heap* heap = newHeap(0);
+  hadd(&heap,1);
+  hadd(&heap,2);
+  hadd(&heap,3);
+  hadd(&heap,4);
+  hadd(&heap,5);
+  hadd(&heap,6);
+  hadd(&heap,7);
+  hadd(&heap,8);
+//  printInorder(heap);
+}
+
 #endif
 
 #endif

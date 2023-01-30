@@ -11,7 +11,10 @@
 __dsa__##s##__()
 
 int main(int argc, char const *argv[]) {
-    execute(completebinarytree);
-    execute(threadbinarytree);
+//    execute(completebinarytree);
+//    execute(threadbinarytree);
+//    execute(queue2);
+    execute(stack);
+    execute(stack2);
     return 0;
 }
