@@ -37,12 +37,13 @@ below are the implementation that have been made:
     - [x] threadedbinarytree
     - [x] completebinarytree
     - [ ] max(min)heap
-- [ ] unbalancedbinarytree
-    - [ ] binarysearchtree
+- [x] unbalancedbinarytree
+    - [x] binarysearchtree
     - [ ] winnertree
     - [ ] losertree
     - [ ] avltree
     - [ ] blackredtree
+    - [ ] btree
 - [ ] string
     - [ ] kmp
 - [ ] sorting

@@ -123,4 +123,21 @@ void __dsa__heap__(){
 
 #endif
 
+#ifdef UBBINTREE
+void __dsa__binarysearchtree__(){
+  binsearTree* tree = newBinSTree();
+  binseartadd(&tree,10);
+  binseartadd(&tree,20);
+  binseartadd(&tree,15);
+  binseartadd(&tree,17);
+  binseartadd(&tree,31);
+  binseartadd(&tree,30);
+  printInorder(tree->root);
+  printf("\n");
+  printf("contains %d: %d\n",17,containsBinST(tree,17));
+  printf("contains %d: %d\n",18,containsBinST(tree,18));
+}
+
+#endif
+
 #endif

@@ -20,6 +20,14 @@ void printStack(Stack *s){
   printf("NULL\n");
 }
 
+void sclear(Stack* s){
+    while(s->top != NULL){
+        Node* temp = s->top;
+        s->top = s->top->next;
+        free(temp);
+    }
+}
+
 void spush(void* s,void* val){
   Stack* stack = (Stack*)s;
   // create a new node
@@ -36,9 +44,14 @@ void** spop(void* s){
   Stack* stack = (Stack*)s;
   if(isSEmpty(s))
     return NULL;
-  Node** ret = &stack->top;
+  // return ptr
+  Node* ret = stack->top;
+  // pop check null
   Node* t = stack->top;
-  stack->top = t->next;
+  if(t->next == NULL)
+    stack->top = NULL;
+  else
+    stack->top = t->next;
   stack->depth--;
-  return &*((*ret)->data);
+  return &*((ret)->data);
 }

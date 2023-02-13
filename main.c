@@ -4,6 +4,7 @@
 #include "queue/queue.h"
 #include "sparsematrix/sparsematrix.h"
 #include "binarytree/binarytree.h"
+#include "unbalancedbinarytree/unbalancedbinarytree.h"
 
 #include "dsalib.h"
 
@@ -13,8 +14,6 @@ __dsa__##s##__()
 int main(int argc, char const *argv[]) {
 //    execute(completebinarytree);
 //    execute(threadbinarytree);
-//    execute(queue2);
-    execute(stack);
-    execute(stack2);
+    execute(binarysearchtree);
     return 0;
 }

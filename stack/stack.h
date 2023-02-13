@@ -19,7 +19,8 @@ typedef struct stack Stack;
 
 Stack* newStack();
 bool isSEmpty(void*);
-void printStack(Stack *);
+void printStack(Stack*);
+void sclear(Stack*);
 void spush(void*,void*);
 void** spop(void*);
 

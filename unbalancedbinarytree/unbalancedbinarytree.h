@@ -15,6 +15,8 @@ struct binseartree{
 typedef struct binseartnode binseartNode;
 typedef struct binseartree binsearTree;
 
-binseartNode* newBinSTNode();
+binseartNode* newBinSTNode(int);
 binsearTree* newBinSTree();
+bool isBinSTEmpty(void*);
+bool containsBinST(binsearTree*, int);
 void binseartadd(binsearTree** t, int val);
