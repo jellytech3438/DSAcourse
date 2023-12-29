@@ -75,11 +75,29 @@ void __dsa__sparsematrix__() {
 
 #ifdef SPARSETABLE
 void __dsa__sparsetable__() {
-  int nums[40] = {1, 5, 3, 1, 4, 7, 8, 6, 9, 0, 5, 6, 3, 1, 4, 4, 9, 5, 3, 1,
-                  7, 5, 3, 5, 6, 9, 7, 4, 1, 2, 5, 7, 4, 8, 6, 3, 2, 1, 4, 5};
+  int nums[40] = {32, 15, 28, 14, 17, 25, 24, 46, 24, 52, 39, 35, 26, 35,
+                  37, 15, 37, 55, 23, 30, 27, 45, 33, 25, 26, 19, 47, 54,
+                  41, 22, 25, 37, 14, 58, 67, 33, 24, 15, 42, 54};
   struct SparseTable *st = new_sparsetable(nums, 40);
   build_sparsetable(st, min_func);
   print_table(st);
+
+  printf("in range: [%d, %d]: the min is: %d\n", 0, 39, minQuery(st, 0, 39));
+  printf("in range: [%d, %d]: the min is: %d\n", 3, 22, minQuery(st, 3, 22));
+  printf("in range: [%d, %d]: the min is: %d\n", 13, 16, minQuery(st, 13, 16));
+  printf("in range: [%d, %d]: the min is: %d\n", 28, 37, minQuery(st, 28, 37));
+  printf("in range: [%d, %d]: the min is: %d\n", 28, 30, minQuery(st, 28, 30));
+}
+#endif
+
+#ifdef BININDTREE
+void __dsa__binaryindextree__() {
+  int nums[40] = {32, 15, 28, 14, 17, 25, 24, 46, 24, 52, 39, 35, 26, 35,
+                  37, 15, 37, 55, 23, 30, 27, 45, 33, 25, 26, 19, 47, 54,
+                  41, 22, 25, 37, 14, 58, 67, 33, 24, 15, 42, 54};
+  struct BinaryIndexTree *bit = new_binaryindextree(nums, 40);
+  build_binaryindextree(bit, sum_func);
+  print_binaryindextree(bit);
 }
 #endif
 

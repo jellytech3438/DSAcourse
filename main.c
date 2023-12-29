@@ -1,3 +1,4 @@
+#include "binaryindextree/binaryindextree.h"
 #include "binarytree/binarytree.h"
 #include "queue/queue.h"
 #include "sparsematrix/sparsematrix.h"
@@ -14,9 +15,10 @@
   __dsa__##s##__()
 
 int main(int argc, char const *argv[]) {
-  //    execute(completebinarytree);
-  //    execute(threadbinarytree);
+  // execute(completebinarytree);
+  // execute(threadbinarytree);
   // execute(binarysearchtree);
-  execute(sparsetable);
+  // execute(sparsetable);
+  execute(binaryindextree);
   return 0;
 }

@@ -30,7 +30,6 @@ void build_sparsetable(struct SparseTable *st, int (*dp_func)(int, int)) {
     for (int j = 0; j < st->n - (1 << (i - 1)); j++) {
       int left = st->table[i - 1][j];
       int right = st->table[i - 1][j + (1 << (i - 1))];
-      printf("%d %d\n", j, j + (1 << (i - 1)));
       st->table[i][j] = dp_func(left, right);
     }
   }
