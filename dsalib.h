@@ -98,6 +98,10 @@ void __dsa__binaryindextree__() {
   struct BinaryIndexTree *bit = new_binaryindextree(nums, 40);
   build_binaryindextree(bit, sum_func);
   print_binaryindextree(bit);
+
+  for (int i = 0; i < 40; i++) {
+    printf("%d %d\n", bit->base[i], read(bit, i + 1));
+  }
 }
 #endif
 
